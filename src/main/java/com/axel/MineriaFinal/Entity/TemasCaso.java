@@ -11,8 +11,8 @@ import java.io.Serializable;
 @IdClass(TemasCasoId.class)
 public class TemasCaso {
     @Id
-    private Integer idCaso;
+    private Caso idCaso;
     @Id
-    private Integer idTema;
+    private Temas idTema;
 }
 

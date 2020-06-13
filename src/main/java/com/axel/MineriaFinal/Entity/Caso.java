@@ -2,9 +2,7 @@ package com.axel.MineriaFinal.Entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Date;
 
@@ -21,15 +19,19 @@ public class Caso {
     private Integer ano;
     @Column
     private Integer dia;
-    @Column
-    private BigInteger direccionHechos;
-    @Column
-    private Integer origen;
-    @Column
-    private Integer servicio;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "id")
+    private Direccion direccionHechos;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "id")
+    private Origen origen;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "id")
+    private Servicio servicio;
     @Column
     private Date fecha;
-    @Column
-    private Integer idUsuario;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "id")
+    private Usuario idUsuario;
 
 }

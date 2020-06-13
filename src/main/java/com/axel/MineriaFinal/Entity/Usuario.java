@@ -2,26 +2,29 @@ package com.axel.MineriaFinal.Entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigInteger;
 
 @Data
 @Entity
 public class Usuario {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column
     private Integer edad;
     @Column
     private String genero;
-    @Column
-    private BigInteger direccionUsuario;
-    @Column
-    private Integer estadoCivil;
-    @Column
-    private Integer ocupacionUsuario;
-    @Column
-    private Integer escolaridadUsuaria;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "id")
+    private Direccion direccionUsuario;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "id")
+    private EstadoCivil estadoCivil;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "id")
+    private Ocupacion ocupacionUsuario;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "id")
+    private Escolaridad escolaridadUsuaria;
 }
