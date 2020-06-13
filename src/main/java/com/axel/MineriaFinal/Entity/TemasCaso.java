@@ -1,9 +1,9 @@
 package com.axel.MineriaFinal.Entity;
 
+import com.axel.MineriaFinal.Utils.TemasCasoId;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Data
 @Entity

@@ -1,5 +1,7 @@
-package com.axel.MineriaFinal.Entity;
+package com.axel.MineriaFinal.Utils;
 
+import com.axel.MineriaFinal.Entity.Caso;
+import com.axel.MineriaFinal.Entity.Temas;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
