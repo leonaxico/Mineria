@@ -4,9 +4,6 @@ import com.axel.MineriaFinal.Entity.*;
 import com.axel.MineriaFinal.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.BufferedReader;
@@ -38,7 +35,8 @@ public class ReaderCSV {
     private UsuarioRepository usuarioRepository;
 
     @RequestMapping("load")
-    public void readCSV(@RequestBody String fileName){
+    public void readCSV(){
+        String fileName = "/home/leonaxico/Downloads/linea-mujeres.csv";
         String splitter = ",";
         BufferedReader br = null;
         String line = "";
@@ -119,9 +117,11 @@ public class ReaderCSV {
                 }
                 servicio = servicioRepository.findByDescripcion(servicio.getDescripcion());
                 caso.setServicio(servicio);
+                user=usuarioRepository.save(user);
+                caso.setIdUsuario(user);
                 caso = casoRepository.save(caso);
                 for(int i = 20;i<27;i++){
-                    if(data[i].matches("NA")) {
+                    if(!data[i].matches("NA")) {
                         Temas tema = new Temas();
                         tema.setDescripcion(data[i]);
                         if (!temaRepository.existsByDescripcion(tema.getDescripcion())) {
@@ -131,7 +131,7 @@ public class ReaderCSV {
                         TemasCasoId id = new TemasCasoId();
                         id.setIdCaso(caso);
                         id.setIdTema(tema);
-                        if(temasCasoRepository.existsById(id)){
+                        if(!temasCasoRepository.existsById(id)){
                             TemasCaso temaCaso = new TemasCaso();
                             temaCaso.setIdCaso(caso);
                             temaCaso.setIdTema(tema);
@@ -155,5 +155,10 @@ public class ReaderCSV {
                 }
             }
         }
+    }
+    @RequestMapping("/parsToStar")
+    public String loadStarModel(){
+
+        return "star model created";
     }
 }

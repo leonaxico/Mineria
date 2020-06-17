@@ -10,7 +10,7 @@ import java.sql.Date;
 @Entity
 public class Caso {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column
     private Integer folio;

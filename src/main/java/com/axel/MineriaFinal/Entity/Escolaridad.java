@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Escolaridad {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column
     private String descripcion;

@@ -9,7 +9,7 @@ import java.math.BigInteger;
 @Entity
 public class Direccion {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
     @Column
     private String estado;
