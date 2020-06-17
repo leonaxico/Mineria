@@ -4,4 +4,6 @@ import com.axel.MineriaFinal.Entity.Ocupacion;
 import org.springframework.data.repository.CrudRepository;
 
 public interface OcupacionRepository extends CrudRepository <Ocupacion,Integer> {
+    boolean existsByDescripción(String descripcion);
+    Ocupacion findByDescripción(String descripcion);
 }

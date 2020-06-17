@@ -10,6 +10,7 @@ import java.sql.Date;
 @Entity
 public class Caso {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column
     private Integer folio;

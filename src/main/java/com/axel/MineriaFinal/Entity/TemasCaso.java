@@ -11,6 +11,7 @@ import javax.persistence.*;
 @IdClass(TemasCasoId.class)
 public class TemasCaso {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Caso idCaso;
     @Id
     private Temas idTema;
